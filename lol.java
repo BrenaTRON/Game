@@ -4,11 +4,6 @@
  *
  * @author (your name)
  * @version (a version number or a date)
-<<<<<<< HEAD
- * // TEj TWas dawerer
-=======
- * i was 
->>>>>>> c42a1ee10dd500c3c26f810158dd1552d88c1122
  */
 public class lol
 {
