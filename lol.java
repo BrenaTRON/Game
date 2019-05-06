@@ -4,7 +4,7 @@
  *
  * @author (your name)
  * @version (a version number or a date)
- * i was 
+ * i wa
  */
 public class lol
 {
