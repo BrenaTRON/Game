@@ -1,33 +1,29 @@
+import java.awt.*; 
+import javax.swing.*;
 
-/**
- * Write a description of class Graphics here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
-public class Graphics
+class ButtonFrame extends JFrame
 {
-    // instance variables - replace the example below with your own
-    private int x;
+  JButton bChange ; // reference to the button object
 
-    /**
-     * Constructor for objects of class Graphics
-     */
-    public Graphics()
-    {
-        // initialise instance variables
-        x = 0;
-    }
+  // constructor for ButtonFrame
+  ButtonFrame(String title) 
+  {
+    super( title );                     // invoke the JFrame constructor
+    setLayout( new FlowLayout() );      // set the layout manager
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
+    bChange = new JButton("Click Me!"); // construct a JButton
+    add( bChange );                     // add the button to the JFrame
+    setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );   
+  }
+}
+
+public class ButtonDemo
+{
+  public static void main ( String[] args )
+  {
+    ButtonFrame frm = new ButtonFrame("Button Demo");
+
+    frm.setSize( 150, 75 );     
+    frm.setVisible( true );   
+  }
 }
