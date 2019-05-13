@@ -1,24 +1,26 @@
-public class ImageButton extends Parent {
+import javafx.event.EventHandler;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
-    private static final Image NORMAL_IMAGE = null;
-    private static final Image PRESSED_IMAGE = null;
+public class ImageButton extends Button {
 
-    private final ImageView iv;
+    public void updateImages(final Image selected, final Image unselected) {
+        final ImageView iv = new ImageView(selected);
+        this.getChildren().add(iv);
 
-    public ImageButton() {
-        this.iv = new ImageView(NORMAL_IMAGE);
-        this.getChildren().add(this.iv);
-
-        this.iv.setOnMousePressed(new EventHandler<MouseEvent>() {
-
+        iv.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent evt) {
-                iv.setImage(PRESSED_IMAGE);
+                iv.setImage(unselected);
             }
-
+        });
+        iv.setOnMouseReleased(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent evt) {
+                iv.setImage(selected);
+            }
         });
 
-        // TODO other event handlers like mouse up
-
-    } 
-
+        super.setGraphic(iv);
+    }
 }
