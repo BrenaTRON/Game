@@ -21,6 +21,11 @@ public class Main extends Application {
         grid.setPadding( new Insets(25,25,25,25));
         Scene scene = new Scene(grid, 300, 300);
         primaryStage.setScene(scene);
+        reposition( grid );
+        primaryStage.show();
+    }
+    public static void reposition( GridPane grid )
+    {
         Button btn = new Button();
         btn.setStyle(
                 "-fx-background-radius: 20em; " +
@@ -32,8 +37,6 @@ public class Main extends Application {
 
         );
         grid.add(btn, 1, 2);
-
-        primaryStage.show();
         btn.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
@@ -41,12 +44,11 @@ public class Main extends Application {
                 grid.getChildren().removeAll(btn);
             }
         });
-
     }
 
 
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+   // public static void main(String[] args) {
+        //launch(args);
+   // }
 }
