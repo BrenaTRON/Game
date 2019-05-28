@@ -1,29 +1,52 @@
-import java.awt.*; 
-import javax.swing.*;
+package sample;
 
-class ButtonFrame extends JFrame
-{
-  JButton bChange ; // reference to the button object
+import javafx.application.Application;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.scene.layout.*;
+import javafx.geometry.*;
+import javafx.scene.control.Button;
+import javafx.event.ActionEvent;
+public class Main extends Application {
 
-  // constructor for ButtonFrame
-  ButtonFrame(String title) 
-  {
-    super( title );                     // invoke the JFrame constructor
-    setLayout( new FlowLayout() );      // set the layout manager
+    @Override
+    public void start (Stage primaryStage )
+    {
+        primaryStage.setTitle("JavaFx Welcome");
+        GridPane grid = new GridPane();
+        grid.setAlignment( Pos.CENTER );
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding( new Insets(25,25,25,25));
+        Scene scene = new Scene(grid, 300, 300);
+        primaryStage.setScene(scene);
+        Button btn = new Button();
+        btn.setStyle(
+                "-fx-background-radius: 20em; " +
+                        "-fx-min-width: 200px; " +
+                        "-fx-min-height: 200px; " +
+                        "-fx-max-width: 200px; " +
+                        "-fx-max-height: 200px;" +
+                        "-fx-background-color: #ff0000;"
 
-    bChange = new JButton("Smack me"); // construct a JButton
-    add( bChange );                     // add the button to the JFrame
-    setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );   
-  }
-}
+        );
+        grid.add(btn, 1, 2);
 
-public class ButtonDemo
-{
-  public static void main ( String[] args )
-  {
-    ButtonFrame frm = new ButtonFrame("Button Demo");
+        primaryStage.show();
+        btn.setOnAction(new EventHandler<ActionEvent>() {
 
-    frm.setSize( 150, 75 );     
-    frm.setVisible( true );   
-  }
+            @Override
+            public void handle(ActionEvent e) {
+                grid.getChildren().removeAll(btn);
+            }
+        });
+
+    }
+
+
+
+    public static void main(String[] args) {
+        launch(args);
+    }
 }
