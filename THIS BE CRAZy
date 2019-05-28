@@ -11,21 +11,20 @@ import javafx.event.ActionEvent;
 public class Main extends Application {
 
     @Override
-    public void start (Stage primaryStage )
-    {
+    public void start(Stage primaryStage) {
         primaryStage.setTitle("JavaFx Welcome");
         GridPane grid = new GridPane();
-        grid.setAlignment( Pos.CENTER );
+        grid.setAlignment(Pos.TOP_LEFT);
         grid.setHgap(10);
         grid.setVgap(10);
-        grid.setPadding( new Insets(25,25,25,25));
+        grid.setPadding(new Insets(25, 25, 25, 25));
         Scene scene = new Scene(grid, 300, 300);
         primaryStage.setScene(scene);
-        reposition( primaryStage, grid );
+        reposition(primaryStage, grid);
         primaryStage.show();
     }
-    public static void reposition( Stage primaryStage, GridPane grid )
-    {
+
+    public static void reposition(Stage primaryStage, GridPane grid) {
         Button btn = new Button();
         btn.setStyle(
                 "-fx-background-radius: 20em; " +
@@ -41,8 +40,9 @@ public class Main extends Application {
 
             @Override
             public void handle(ActionEvent e) {
+                grid.getChildren().remove(btn);
                 Button btn1 = new Button();
-                btn.setStyle(
+                btn1.setStyle(
                         "-fx-background-radius: 20em; " +
                                 "-fx-min-width: 200px; " +
                                 "-fx-min-height: 200px; " +
@@ -51,16 +51,18 @@ public class Main extends Application {
                                 "-fx-background-color: #ff0000;"
 
                 );
-                grid.getChildren().remove(1, 2);
-                grid.add(btn1, 20, 12);
+                grid.getChildren().remove(btn);
+                grid.add(btn1, 170, 10);
 
             }
         });
     }
+}
 
 
 
    // public static void main(String[] args) {
         //launch(args);
    // }
-}
+
+
