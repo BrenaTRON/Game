@@ -51,7 +51,7 @@ public class Main extends Application {
                 Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
                 int width = (int) primaryScreenBounds.getWidth();
                 int height = (int) primaryScreenBounds.getHeight();
-                if (((currentTime - createdMills) / 1000.0) > (2 - .082 * count) && count != 0 )
+                if (((currentTime - createdMills) / 1000.0) > (2 - .089 * count) && count != 0 )
                 {
                     grid.getChildren().remove(btn);
                     StackPane stack =  new StackPane();
