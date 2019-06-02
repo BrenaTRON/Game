@@ -14,6 +14,8 @@ import javafx.stage.Screen;
 public class Main extends Application {
     public static int count = 0;
     @Override
+    // Creates the stage and button.  
+    //@param primaryStage
     public void start(Stage primaryStage) {
         primaryStage.setTitle("JavaFx Welcome");
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
@@ -41,6 +43,10 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+    //Interprets click and either randomly repositions the button for the next 
+    //round or ends the game with win or lose end screen
+    //@param grid
+    //@param btn
     public static void reposition(GridPane grid, Button btn) {
         long createdMills = System.currentTimeMillis();
         btn.setOnAction(new EventHandler<ActionEvent>() {
