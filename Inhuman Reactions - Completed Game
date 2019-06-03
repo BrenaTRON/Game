@@ -34,6 +34,7 @@ public class Main extends Application {
         grid.setPadding(new Insets(25, 25, 25, 25));
         Scene scene = new Scene(grid, 300, 300);
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
         Button btn = new Button();
         btn.setStyle(
                 "-fx-background-radius: 20em; " +
