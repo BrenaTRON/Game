@@ -1,3 +1,6 @@
+/**
+ * @author Tej Tummala, Brennan Dai, Will Alvarez-Rutz
+ */ 
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -15,6 +18,10 @@ import javafx.scene.text.Text;
 public class Main extends Application {
     public static int count = 0;
     @Override
+    /**
+     * Creates the stage, gridpane, and button
+     * @param primaryStage
+     */
     public void start(Stage primaryStage) {
         primaryStage.setTitle("JavaFx Welcome");
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
@@ -39,11 +46,20 @@ public class Main extends Application {
         );
         Text round = new Text();
         grid.add(btn, 0, 0);
-        reposition(grid, btn, round);
+        reposition(grid, btn, round, "");
         primaryStage.show();
     }
-
-    public static void reposition(GridPane grid, Button btn, Text round) {
+    /**
+     * If user runs out of time, prints failure message
+     * If user completes all rounds, game is won
+     * Otherwise, button moved to random location and Reposition is 
+     * called again
+     * @param grid
+     * @param btn
+     * @param round
+     * @param score
+    */
+    public static void reposition(GridPane grid, Button btn, Text round, String score) {
         long createdMills = System.currentTimeMillis();
         btn.setOnAction(new EventHandler<ActionEvent>() {
             
@@ -57,7 +73,7 @@ public class Main extends Application {
                 {
                     grid.getChildren().remove(btn);
                     StackPane stack =  new StackPane();
-                    stack.getChildren().addAll( new Label("You took too long - Better Luck Next Time!"));
+                    stack.getChildren().addAll( new Label("You took too long - Better Luck Next Time!\nYour score: " + score));
                     grid.add(stack, 45, 45);
                 }
                 else if( count > 18 )
@@ -92,7 +108,7 @@ public class Main extends Application {
                     int row = (int) (Math.random() * (height / 10 - 17));
                     grid.add(btn1, col, row);
                     grid.add(round, 0, 0);
-                    reposition(grid, btn1, round);
+                    reposition(grid, btn1, round, Integer.toString(count));
                 }
             }
         });
